@@ -37,3 +37,5 @@ print(new_str)
 my_str = str(input('Введите текст: '))
 new_str = my_str + my_str[::-1] if len(my_str) < 5 else my_str
 print(new_str)
+
+#####################################################
