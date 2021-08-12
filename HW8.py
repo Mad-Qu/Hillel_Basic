@@ -3,7 +3,7 @@
 def mixing_list(some_list: list) -> list:
     result_list = []
 
-    for index in range(0, len(some_list)):
+    for index in range(len(some_list)):
         if not index % 2:
             result_list.append(some_list[index])
         else:
@@ -45,7 +45,7 @@ new_list = creating_list_only_str_values(my_list)
 ######################### 05 #########################
 
 def creating_list_with_unique_symbols_from_string(some_str: str) -> list:
-    result_list = [char for char in some_str if some_str.count(char) == 1]
+    result_list = [char for char in set(some_str) if some_str.count(char) == 1]
 
     return result_list
 
@@ -79,17 +79,19 @@ my_str2 = '890ooosss123'
 new_list = create_list_unique_same_symbols_2_str(my_str1, my_str2)
 
 ######################### 08 #########################
+
+from random import choice
 from random import randint
 from string import ascii_lowercase
 
 
 def create_email(names_list: list, domains_list: list) -> str:
-    name = names_list[randint(0, len(names_list) - 1)]
-    domain = domains_list[randint(0, len(names_list) - 1)]
+    name = choice(names_list)
+    domain = choice(domains_list)
     name_after_dog = ''
 
     for _ in range(randint(5, 7)):
-        name_after_dog += ascii_lowercase[randint(0, len(ascii_lowercase) - 1)]
+        name_after_dog += choice(ascii_lowercase)
 
     res = name + '.' + str(randint(100, 999)) + '@' + name_after_dog + '.' + domain
 
