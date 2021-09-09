@@ -30,12 +30,12 @@ def do_search_potential_exit(maze_list: list) -> list:
             potential_exit_list.append([len(maze_list) - 1, index])
         index += 1
 
-    for index in range(1, len(maze_list) - 1):
+    for index in range(1, len(maze_list[0]) - 1):
         if maze_list[index][0] == '.':
             potential_exit_list.append([index, 0])
 
-    for index in range(1, len(maze_list) - 1):
-        if maze_list[index][len(maze_list) - 1] == '.':
+    for index in range(1, len(maze_list[0]) - 1):
+        if maze_list[index][len(maze_list[0]) - 1] == '.':
             potential_exit_list.append([index, len(maze_list) - 1])
 
     return potential_exit_list
@@ -106,12 +106,12 @@ def do_search_exit(maze: list, x: int, y: int) -> list:
 # Если точка старта находится на периметре лабиринта
 # то она не расценивается как выход!!!
 
-my_maze = stock_maze.maze  # для удобства вынес лабиринт в отдельный файл
+my_maze = stock_maze.maze2  # для удобства вынес лабиринт в отдельный файл
 
 # на вход лабиринт и координаты старта
 # возвращает список списков координат выхода(ов) в формате [x, y]
 # или пустой список если нет выхода
-points = do_search_exit(my_maze, 1, 3)
+points = do_search_exit(my_maze, 1, 0)
 
 for count in range(len(points)):
     print(f'Точка выхода № {count + 1} - {points[count]}')
